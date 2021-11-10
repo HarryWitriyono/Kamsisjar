@@ -25,11 +25,11 @@
 <?php 
 if (isset($_POST['bSubmit'])) {
 	$koneksi = mysqli_connect("localhost","root","","testDB");
-	$personid=$_POST['personid'];
-	$fname=$_POST['fname'];
-	$lname=$_POST['lname'];
-	$address=$_POST['address'];
-	$city=$_POST['city'];
+	$personid=filter_var($_POST['personid'],FILTER_SANITIZE_STRING);
+	$fname=filter_var($_POST['fname'],FILTER_SANITIZE_STRING);
+	$lname=filter_var($_POST['lname'],FILTER_SANITIZE_STRING);
+	$address=filter_var($_POST['address'],FILTER_SANITIZE_STRING);
+	$city=filter_var($_POST['city'],FILTER_SANITIZE_STRING);
 $sql="insert into Persons (PersonID,LastName,FirstName,Address,City)
       values ('".$personid."','".$lname."','".$fname."','".$address."','".$city."')";
 $qq=mysqli_query($koneksi,$sql);
